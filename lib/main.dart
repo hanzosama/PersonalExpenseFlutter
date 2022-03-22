@@ -15,6 +15,7 @@ class MyApp extends StatelessWidget {
       fontFamily: 'OpenSans',
       fontSize: 20,
       fontWeight: FontWeight.bold,
+      color: Colors.white,
     );
     var titleTextStyle = TextStyle(
       fontFamily: 'OpenSans',
@@ -25,7 +26,6 @@ class MyApp extends StatelessWidget {
       title: 'Personal Expenses App',
       theme: ThemeData(
           primarySwatch: Colors.purple,
-          fontFamily: 'Quicksand',
           textTheme: TextTheme(
             titleLarge: titleTextStyle,
             titleMedium: titleTextStyle,
