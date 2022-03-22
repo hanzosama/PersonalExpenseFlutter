@@ -10,8 +10,29 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var appBartitleTextStyle = TextStyle(
+      fontFamily: 'OpenSans',
+      fontSize: 20,
+      fontWeight: FontWeight.bold,
+    );
+    var titleTextStyle = TextStyle(
+      fontFamily: 'OpenSans',
+      fontSize: 18,
+      fontWeight: FontWeight.bold,
+    );
     return MaterialApp(
-      title: 'Flutter App',
+      title: 'Personal Expenses App',
+      theme: ThemeData(
+          primarySwatch: Colors.purple,
+          fontFamily: 'Quicksand',
+          textTheme: TextTheme(
+            titleLarge: titleTextStyle,
+            titleMedium: titleTextStyle,
+            titleSmall: titleTextStyle,
+          ),
+          appBarTheme: AppBarTheme(
+            titleTextStyle: appBartitleTextStyle,
+          )),
       home: MyHomePage(),
     );
   }
@@ -24,7 +45,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final List<Transaction> _userTransactions = [
-    Transaction(
+/*     Transaction(
       id: 't1',
       title: 'New shoes',
       amount: 69.99,
@@ -35,7 +56,7 @@ class _MyHomePageState extends State<MyHomePage> {
       title: 'Weekly Groceries',
       amount: 16.53,
       date: DateTime.now(),
-    )
+    ) */
   ];
 
   void _addNewTransaction(String title, double amount) {
@@ -54,7 +75,9 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Flutter App'),
+        title: Text(
+          'Personal Expenses App',
+        ),
         actions: [
           IconButton(
             icon: Icon(Icons.add),
