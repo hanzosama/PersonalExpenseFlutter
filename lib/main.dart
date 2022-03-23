@@ -23,6 +23,7 @@ class MyApp extends StatelessWidget {
       fontWeight: FontWeight.bold,
     );
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Personal Expenses App',
       theme: ThemeData(
           primarySwatch: Colors.purple,
