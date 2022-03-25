@@ -168,33 +168,8 @@ class _MyHomePageState extends State<MyHomePage> {
     final mainPageBody = SafeArea(
         child: SingleChildScrollView(
       child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-        if (isLandscape)
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                'Show Chart',
-                style: Theme.of(context).textTheme.titleSmall,
-              ),
-              Switch.adaptive(
-                activeColor: Theme.of(context).accentColor,
-                value: _showChart,
-                onChanged: (show) {
-                  setState(() {
-                    _showChart = show;
-                  });
-                },
-              )
-            ],
-          ),
-        if (!isLandscape)
-          Container(
-            height: (mediaQuery.size.height -
-                    appBar.preferredSize.height -
-                    mediaQuery.padding.top) *
-                0.3,
-            child: Chart(_recentTransactions),
-          ),
+        if (isLandscape) _buildLandscapeContent(),
+        if (!isLandscape) _buildPortraintContent(mediaQuery, appBar),
         if (!isLandscape) txWidget,
         if (isLandscape)
           _showChart
@@ -225,6 +200,40 @@ class _MyHomePageState extends State<MyHomePage> {
                     onPressed: () => _startNewTransaction(context),
                   ),
           );
+  }
+
+  Widget _buildLandscapeContent() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text(
+          'Show Chart',
+          style: Theme.of(context).textTheme.titleSmall,
+        ),
+        Switch.adaptive(
+          activeColor: Theme.of(context).accentColor,
+          value: _showChart,
+          onChanged: (show) {
+            setState(() {
+              _showChart = show;
+            });
+          },
+        )
+      ],
+    );
+  }
+
+  Widget _buildPortraintContent(
+    MediaQueryData mediaQuery,
+    AppBar appBar,
+  ) {
+    return Container(
+      height: (mediaQuery.size.height -
+              appBar.preferredSize.height -
+              mediaQuery.padding.top) *
+          0.3,
+      child: Chart(_recentTransactions),
+    );
   }
 
   void _startNewTransaction(BuildContext ctx) {
