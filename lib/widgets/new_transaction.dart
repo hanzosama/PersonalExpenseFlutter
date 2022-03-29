@@ -7,16 +7,43 @@ import 'package:intl/intl.dart';
 class NewTransaction extends StatefulWidget {
   final Function onNewTransaction;
 
-  NewTransaction(this.onNewTransaction);
+  NewTransaction(this.onNewTransaction) {
+    print('NewTransaction Constructor called');
+  }
 
   @override
-  State<NewTransaction> createState() => _NewTransactionState();
+  State<NewTransaction> createState() {
+    print('NewTransaction createState called');
+    return _NewTransactionState();
+  }
 }
 
 class _NewTransactionState extends State<NewTransaction> {
   final _titleController = TextEditingController();
   final _amoutContoller = TextEditingController();
   DateTime? _selectedDate;
+
+  _NewTransactionState() {
+    print('_NewTransactionState Constructor called');
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    print('_NewTransactionState initState called');
+  }
+
+  @override
+  void didUpdateWidget(covariant NewTransaction oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    print('_NewTransactionState didUpdateWidget called');
+  }
+
+  @override
+  void dispose() {
+    print('_NewTransactionState dispose called');
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
